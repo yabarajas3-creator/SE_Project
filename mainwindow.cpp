@@ -86,6 +86,11 @@ void MainWindow::loadTasks()
 void MainWindow::on_createTaskButton_clicked()
 {
     QString title = ui->taskNameInput->text();
+    if(title.trimmed().isEmpty())
+    {
+        QMessageBox::warning(this, "Invalid Task", "Task name must be filled.");
+        return;
+    }
     QString description = ui->taskDescriptionInput->toPlainText();
     QString category = ui->taskCategoryInput->currentText();
     QString priority = ui->TaskPriorityInput->currentText();
